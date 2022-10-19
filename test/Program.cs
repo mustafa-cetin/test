@@ -24,11 +24,11 @@ namespace test
             int scoreA = 0;
             int scoreB = 0;
             int scoreC = 0;
-
-            Console.Write("X: ");
+            Console.WriteLine("Enter the location of A:");
+            Console.Write("AX: ");
             ax = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Y: ");
+            Console.Write("AY: ");
             ay = Convert.ToInt32(Console.ReadLine());
 
             if (ax <= 10 && -10 <= ax && -10 <= ay && ay <= +10)
@@ -38,6 +38,16 @@ namespace test
                 cx = random.Next(-10, 11);
                 by = random.Next(-10, 11);
                 cy = random.Next(-10, 11);
+
+                // 0,0 == 14,11
+                Console.WriteLine("   +----------^----------+\r\n 10|..........|..........|\r\n  9|..........|..........|\r\n  8|..........|..........|\r\n  7|..........|..........|\r\n  6|..........|..........|\r\n  5|..........|..........|\r\n  4|..........|..........|\r\n  3|..........|..........|\r\n  2|..........|..........|\r\n  1|..........|..........|\r\n  0|----------+---------->\r\n -1|..........|..........|\r\n -2|..........|..........|\r\n -3|..........|..........|\r\n -4|..........|..........|\r\n -5|..........|..........|\r\n -6|..........|..........|\r\n -7|..........|..........|\r\n -8|..........|..........|\r\n -9|..........|..........|\r\n-10|..........|..........|\r\n   +---------------------+\r\n    098765432101234567890\r\n");
+                Console.SetCursorPosition(ax+14,-ay+14);
+                Console.Write("A");
+                Console.SetCursorPosition(bx + 14, -by + 14);
+                Console.Write("B");
+                Console.SetCursorPosition(cx + 14, -cy + 14);
+                Console.Write("C");
+                Console.SetCursorPosition(0, 28);
 
 
                 // COORDINATE PLANE AND SHOWN ARCHERS
