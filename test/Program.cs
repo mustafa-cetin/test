@@ -184,7 +184,7 @@ namespace test
                             calculatedScore = 10 * (Math.Abs(ax - cx) + Math.Abs(ay - cy)) + (100 - hpA); // TEMP
                             scoreA += calculatedScore;
 
-                            Console.WriteLine($"Round 1: A-C \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Non-fighter     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: A-C \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Non-fighter     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                             if (disAB <= 15)
                             {
@@ -192,7 +192,7 @@ namespace test
                                 hpA = 0;
                                 calculatedScore = 10 * (Math.Abs(ax - bx) + Math.Abs(ay - by)) + (100 - hpB); // TEMP
                                 scoreB += calculatedScore;
-                                Console.WriteLine($"Round 2: B-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: B-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreA>scoreB)
                                 {
@@ -222,7 +222,7 @@ namespace test
                             calculatedScore = 10 * (Math.Abs(ax - cx) + Math.Abs(ay - cy)) + (100 - hpC); // TEMP
                             scoreC += calculatedScore;
 
-                            Console.WriteLine($"Round 1: C-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Non-fighter     Health:{hpB}   Score:{scoreB}\r\nC: Survivor  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: C-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Non-fighter     Health:{hpB}   Score:{scoreB}\r\nC: Survivor     Health:{hpC}  Score:{scoreC}\r\n");
 
                             if (disBC <= 15)
                             {
@@ -230,7 +230,7 @@ namespace test
                                 hpC = 0;
                                 calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpB); // TEMP
                                 scoreB += calculatedScore;
-                                Console.WriteLine($"Round 2: B-C \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: B-C \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreB > scoreC)
                                 {
@@ -250,6 +250,7 @@ namespace test
 
                                 Console.WriteLine("Round 2: B-C \r\n");
                                 Console.WriteLine("Too distant, no attack");
+                                Console.WriteLine("");
                                 Console.WriteLine($"C has the maximum score ({scoreC})");
                                 // END
                             }
@@ -265,14 +266,14 @@ namespace test
                             calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpA); // TEMP
                             scoreA += calculatedScore;
 
-                            Console.WriteLine($"Round 1: A-B \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Non-fighter  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: A-B \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Non-fighter     Health:{hpC}  Score:{scoreC}\r\n");
                             if (disAC <= 0)
                             {
                                 hpC -= 25;
                                 hpA = 0;
                                 calculatedScore = 10 * (Math.Abs(cx - ax) + Math.Abs(cy - ay)) + (100 - hpC); // TEMP
                                 scoreC += calculatedScore;
-                                Console.WriteLine($"Round 2: C-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: C-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreA > scoreC)
                                 {
@@ -292,6 +293,8 @@ namespace test
 
                                 Console.WriteLine("Round 2: C-A \r\n");
                                 Console.WriteLine("Too distant, no attack");
+
+                                Console.WriteLine("");
                                 Console.WriteLine($"A has the maximum score ({scoreA})");
                                 // END
                             }
@@ -302,7 +305,7 @@ namespace test
                             hpA = 0;
                             calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpB); // TEMP
                             scoreB += calculatedScore;
-                            Console.WriteLine($"Round 1: B-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Non-fighter  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: B-A \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Non-fighter     Health:{hpC}  Score:{scoreC}\r\n");
 
                             if (disBC<=15)
                             {
@@ -310,7 +313,7 @@ namespace test
                                 hpB = 0;
                                 calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpC); // TEMP
                                 scoreC+=calculatedScore;
-                                Console.WriteLine($"Round 2: C-B \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: C-B \r\n\r\nA: Defeated     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreB>scoreC)
                                 {
@@ -331,6 +334,8 @@ namespace test
 
                                 Console.WriteLine("Round 2: C-B \r\n");
                                 Console.WriteLine("Too distant, no attack");
+
+                                Console.WriteLine("");
                                 Console.WriteLine($"B has the maximum score ({scoreB})");
                                 // end
                             }
@@ -344,7 +349,7 @@ namespace test
                             hpC = 0;
                             calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpB); // TEMP
                             scoreB+=calculatedScore;
-                            Console.WriteLine($"Round 1: B-C \r\n\r\nA: Non-fighter     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: B-C \r\n\r\nA: Non-fighter     Health:{hpA}  Score:{scoreA} \r\nB: Survivor     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                             if (disAB<=15)
                             {
@@ -352,7 +357,7 @@ namespace test
                                 hpB = 0;
                                 calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpA); // TEMP
                                 scoreA+=calculatedScore;
-                                Console.WriteLine($"Round 2: A-B \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: A-B \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreA>scoreB)
                                 {
@@ -372,6 +377,8 @@ namespace test
                                 // too distant no attack / b has the max score
                                 Console.WriteLine("Round 2: A-B \r\n");
                                 Console.WriteLine("Too distant, no attack");
+
+                                Console.WriteLine("");
                                 Console.WriteLine($"B has the maximum score ({scoreB})");
                                 // end
                             }
@@ -382,7 +389,7 @@ namespace test
                             hpB = 0;
                             calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpC); // TEMP
                             scoreC+=calculatedScore;
-                            Console.WriteLine($"Round 1: C-B \r\n\r\nA: Non-fighter     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor  Health:{hpC}  Score:{scoreC}\r\n");
+                            Console.WriteLine($"Round 1: C-B \r\n\r\nA: Non-fighter     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Survivor     Health:{hpC}  Score:{scoreC}\r\n");
 
                             if (disAC<=15)
                             {
@@ -390,7 +397,7 @@ namespace test
                                 hpC = 0;
                                 calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpA); // TEMP
                                 scoreA += calculatedScore;
-                                Console.WriteLine($"Round 2: A-C \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Defeated  Health:{hpC}  Score:{scoreC}\r\n");
+                                Console.WriteLine($"Round 2: A-C \r\n\r\nA: Survivor     Health:{hpA}  Score:{scoreA} \r\nB: Defeated     Health:{hpB}   Score:{scoreB}\r\nC: Defeated     Health:{hpC}  Score:{scoreC}\r\n");
 
                                 if (scoreA>scoreC)
                                 {
@@ -411,6 +418,8 @@ namespace test
 
                                 Console.WriteLine("Round 2: A-C \r\n");
                                 Console.WriteLine("Too distant, no attack");
+
+                                Console.WriteLine("");
                                 Console.WriteLine($"C has the maximum score ({scoreC})");
 
                                 // end
