@@ -11,9 +11,19 @@ namespace test
     {
         static void Main(string[] args)
         {
+
+            int aVsB = 0;
+            int bVsC = 0;
+            int cVsA = 0;
+            string setA, setB, setC;
             Random random = new Random();
             int r;
             int ax, ay, bx, by, cx, cy;
+            int hpA, hpB, hpC;
+            double disAB, disAC, disBC;
+            int scoreA = 0;
+            int scoreB = 0;
+            int scoreC = 0;
 
             Console.Write("X: ");
             ax = Convert.ToInt32(Console.ReadLine());
@@ -32,7 +42,6 @@ namespace test
 
                 // COORDINATE PLANE AND SHOWN ARCHERS
 
-                string setA, setB, setC;
 
                 // randomly assign sets
                 List<string> sets = new List<string>() { "set1", "set2", "set3" };
@@ -50,7 +59,6 @@ namespace test
                 setC = sets[r];
                 sets.RemoveAt(r);
 
-                int aVsB, bVsC, cVsA;
                 // set1 > set2 > set3 > set1 > set2> set3> set1
 
                 // comparing sets who wins
@@ -104,7 +112,6 @@ namespace test
 
 
                 // randomly assign healths
-                int hpA, hpB, hpC;
                 List<int> healths = new List<int>() { 60, 80, 100 };
                 r = random.Next(healths.Count);
                 hpA = healths[r];
@@ -120,9 +127,9 @@ namespace test
 
 
                 // GETTING DISTANCE BETWEEN PLAYERS
-                double disAB = Math.Sqrt(Math.Pow(ax - bx, 2) + Math.Pow(ay - by, 2));
-                double disBC = Math.Sqrt(Math.Pow(cx - bx, 2) + Math.Pow(cy - by, 2));
-                double disAC = Math.Sqrt(Math.Pow(ax - cx, 2) + Math.Pow(ay - cy, 2));
+                disAB = Math.Sqrt(Math.Pow(ax - bx, 2) + Math.Pow(ay - by, 2));
+                disBC = Math.Sqrt(Math.Pow(cx - bx, 2) + Math.Pow(cy - by, 2));
+                disAC = Math.Sqrt(Math.Pow(ax - cx, 2) + Math.Pow(ay - cy, 2));
 
                 double minimum = disAB;
 
@@ -142,15 +149,12 @@ namespace test
                 {
 
                     // SCORE DEFINITION
-                    int scoreA = 0;
-                    int scoreB = 0;
-                    int scoreC = 0;
 
                     int calculatedScore;
-                    // FIND WHO IS MINIMUM
+                    // FIND WHO IS MINIMUM AND FIGHTING
                     if (minimum == disAC)
                     {
-                        if (setA > setC)
+                        if (cVsA == 0)
                         {
                             hpA -= 25;
                             hpC = 0;
@@ -166,6 +170,16 @@ namespace test
                                 calculatedScore = 10 * (Math.Abs(ax - bx) + Math.Abs(ay - by)) + (100 - hpB); // TEMP
                                 scoreB += calculatedScore;
                                 // WRITE ROUND 2 TEXT
+                                if (scoreA>scoreB)
+                                {
+                                    // a has the max score
+                                    // end
+                                }
+                                else
+                                {
+                                    // b has the max score
+                                    // end
+                                }
                             }
                             else
                             {
@@ -183,25 +197,163 @@ namespace test
 
                             if (disBC <= 15)
                             {
+                                hpB -= 25;
+                                hpC = 0;
+                                calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpB); // TEMP
+                                scoreB += calculatedScore;
+
+                                if (scoreB > scoreC)
+                                {
+                                    // B HAS MAX SCORE
+                                    // END
+                                }
+                                else
+                                {
+                                    // C HAS MAX SCORE
+                                    // END
+                                }
+
                             }
                             else
                             {
                                 // too distant / C has max score
+                                // END
                             }
 
                         }
                     }
-
-
-
-
-
-
+                    else if (minimum == disAB)
+                    {
+                        if (aVsB==1)
+                        {
+                            hpA -= 25;
+                            hpB = 0;
+                            calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpA); // TEMP
+                            scoreA += calculatedScore;
+                            // ROUND1 TEXT
+                            if (disAC <= 0)
+                            {
+                                hpC -= 25;
+                                hpA = 0;
+                                calculatedScore = 10 * (Math.Abs(cx - ax) + Math.Abs(cy - ay)) + (100 - hpC); // TEMP
+                                scoreC += calculatedScore;
+                                // ROUND 2 TEXT
+                                if (scoreA > scoreC)
+                                {
+                                    // A HAS THE MAX SCORE
+                                    // END
+                                }
+                                else
+                                {
+                                    // C HAS THE MAX SCORE
+                                    // END
+                                }
+                            }
+                            else
+                            {
+                                // TOO DISTANT / A has max score
+                                // END
+                            }
+                        }
+                        else
+                        {
+                            hpB -= 25;
+                            hpA = 0;
+                            calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpB); // TEMP
+                            scoreB += calculatedScore;
+                            // ROUND 1 TEXT
+                            if (disBC<=15)
+                            {
+                                hpC -= 25;
+                                hpB = 0;
+                                calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpC); // TEMP
+                                scoreC+=calculatedScore;
+                                // round2 text
+                                if (scoreB>scoreC)
+                                {
+                                    // B HAS THE MAX SCORE
+                                    // END
+                                }
+                                else
+                                {
+                                    // C HAS THE MAX SCORE
+                                    // END
+                                }
+                            }
+                            else
+                            {
+                                // too distant no attack / b has the max score
+                                // end
+                            }
+                        }
+                    }
+                    else if (minimum==disBC)
+                    {
+                        if (bVsC == 1)
+                        {
+                            hpB -= 25;
+                            hpC = 0;
+                            calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpB); // TEMP
+                            scoreB+=calculatedScore;
+                            // ROUND1 TEXT
+                            if (disAB<=15)
+                            {
+                                hpA -= 25;
+                                hpB = 0;
+                                calculatedScore = 10 * (Math.Abs(bx - ax) + Math.Abs(by - ay)) + (100 - hpA); // TEMP
+                                scoreA+=calculatedScore;
+                                // ROUND 2 TEXT
+                                if (scoreA>scoreB)
+                                {
+                                    // a has the max score
+                                    // end
+                                }
+                                else
+                                {
+                                    // b has the max score
+                                    // end
+                                }
+                            }
+                            else
+                            {
+                                // too distant no attack / b has the max score
+                                // end
+                            }
+                        }
+                        else
+                        {
+                            hpC-= 25;
+                            hpB = 0;
+                            calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpC); // TEMP
+                            scoreC+=calculatedScore;
+                            // ROUND 1 TEXT
+                            if (disAC<=15)
+                            {
+                                hpA -= 25;
+                                hpC = 0;
+                                calculatedScore = 10 * (Math.Abs(bx - cx) + Math.Abs(by - cy)) + (100 - hpA); // TEMP
+                                scoreA += calculatedScore;
+                                // ROUND 2 TEXT
+                                if (scoreA>scoreC)
+                                {
+                                    // A HAS THE MAX SCORE
+                                    // END
+                                }
+                                else
+                                {
+                                    // C HAS THE MAX SCORE
+                                    // END
+                                }
+                            }
+                            else
+                            {
+                                // too distant no attack / C has the max score
+                                // end
+                            }
+                        }
+                    }
 
                 }
-
-
-
             }
             else
             {
