@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace test
 {
@@ -15,7 +11,7 @@ namespace test
             int aVsB = 0;
             int bVsC = 0;
             int cVsA = 0;
-            string setA, setB, setC;
+            int setA, setB, setC;
             Random random = new Random();
             int r;
             int ax, ay, bx, by, cx, cy;
@@ -54,27 +50,32 @@ namespace test
 
 
                 // randomly assign sets
-                List<string> sets = new List<string>() { "Set 1", "Set 2", "Set 3" };
-                r = random.Next(sets.Count);
-                setA = sets[r];
-                sets.RemoveAt(r);
+                setA = random.Next(1, 4);
+                if (setA == 1)
+                {
+                    setB = random.Next(2, 4);
+                    setC = setB == 2 ? 3 : 2;
 
+                }
+                else if (setA == 2)
+                {
+                    setB = random.Next(1, 3);
+                    setB = setB == 1 ? 1 : 3;
+                    setC = setB == 1 ? 3 : 1;
 
-                r = random.Next(sets.Count);
-                setB = sets[r];
-                sets.RemoveAt(r);
-
-
-                r = random.Next(sets.Count);
-                setC = sets[r];
-                sets.RemoveAt(r);
+                }
+                else
+                {
+                    setB = random.Next(1, 3);
+                    setC = setB == 1 ? 2 : 1;
+                }
 
                 // Set 1 > Set 2 > Set 3 > Set 1 > Set 2> Set 3> Set 1
 
                 // comparing sets who wins
-                if (setA == "Set 1")
+                if (setA == 1)
                 {
-                    if (setB == "Set 2") // A=Set 1 B=Set 2 C=Set 3
+                    if (setB ==2) // A=Set 1 B=Set 2 C=Set 3
                     {
                         aVsB = 1;
                         bVsC = 1;
@@ -87,9 +88,9 @@ namespace test
                         cVsA = 0;
                     }
                 }
-                else if (setA == "Set 2")
+                else if (setA == 2)
                 {
-                    if (setB == "Set 1") // A=Set 2 B=Set 1 C=Set 3
+                    if (setB == 1) // A=Set 2 B=Set 1 C=Set 3
                     {
                         aVsB = 0;
                         bVsC = 0;
@@ -102,9 +103,9 @@ namespace test
                         cVsA = 1;
                     }
                 }
-                else if (setA == "Set 3")
+                else if (setA == 3)
                 {
-                    if (setB == "Set 1") // A=Set 3 B= Set 1 C=Set 2
+                    if (setB == 1) // A=Set 3 B= Set 1 C=Set 2
                     {
                         aVsB = 1;
                         bVsC = 1;
@@ -122,25 +123,28 @@ namespace test
 
 
                 // randomly assign healths
-                List<int> healths = new List<int>() { 60, 80, 100 };
-                r = random.Next(healths.Count);
-                hpA = healths[r];
-                healths.RemoveAt(r);
-
-                r = random.Next(healths.Count);
-                hpB = healths[r];
-                healths.RemoveAt(r);
-
-                r = random.Next(healths.Count);
-                hpC = healths[r];
-                healths.RemoveAt(r);
-
+                hpA = random.Next(3, 6) * 20;
+                if (hpA == 60)
+                {
+                    hpB = random.Next(4, 6) * 20;
+                    hpC = hpB == 80 ? 100 : 80;
+                }
+                else if (hpA == 80)
+                {
+                    hpB = random.Next(1, 3) == 1 ? 60 : 100;
+                    hpC = hpB == 60 ? 100 : 60;
+                }
+                else
+                {
+                    hpB = random.Next(3, 5) * 20;
+                    hpC = hpB == 60 ? 80 : 100;
+                }
                 // WRITING ARCHERS
-                Console.WriteLine($"A: ({ax},{ay})  {setA}  Health:{hpA}  ");
+                Console.WriteLine($"A: ({ax},{ay}) Set {setA}  Health:{hpA}  ");
 
-                Console.WriteLine($"B: ({bx},{by})  {setB}  Health:{hpB}  ");
+                Console.WriteLine($"B: ({bx},{by}) Set {setB}  Health:{hpB}  ");
 
-                Console.WriteLine($"C: ({cx},{cy})  {setC}  Health:{hpC}  ");
+                Console.WriteLine($"C: ({cx},{cy}) Set {setC}  Health:{hpC}  ");
                 Console.WriteLine("");
 
                 Console.WriteLine("------------------------------------------------");
